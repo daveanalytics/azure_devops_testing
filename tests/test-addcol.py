@@ -1,17 +1,22 @@
 # test-addcol.py
 import pytest
-
-from dbxdemo.spark import get_spark
-from dbxdemo.appendcol import with_status
+from pyspark.sql import SparkSession
+from addcol import with_status
 
 class TestAppendCol(object):
 
     def test_with_status(self):
+        spark = SparkSession.builder \
+            .config("spark.sql.shuffle.partitions", "1") \
+            .master("local") \
+            .enableHiveSupport() \
+            .getOrCreate()
+
         source_data = [
             ("pete", "pan", "peter.pan@databricks.com"),
             ("jason", "argonaut", "jason.argonaut@databricks.com")
         ]
-        source_df = get_spark().createDataFrame(
+        source_df = spark.createDataFrame(
             source_data,
             ["first_name", "last_name", "email"]
         )
@@ -22,7 +27,7 @@ class TestAppendCol(object):
             ("pete", "pan", "peter.pan@databricks.com", "checked"),
             ("jason", "argonaut", "jason.argonaut@databricks.com", "checked")
         ]
-        expected_df = get_spark().createDataFrame(
+        expected_df = spark.createDataFrame(
             expected_data,
             ["first_name", "last_name", "email", "status"]
         )
