@@ -13,6 +13,7 @@ steps:
 - script: |
     pip install pytest requests setuptools wheel
     pip install -U databricks-connect==6.4.28
+    pip install dbxdemo
   displayName: 'Load Python Dependencies'
 
 - script: |
