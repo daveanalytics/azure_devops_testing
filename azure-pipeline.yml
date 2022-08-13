@@ -49,6 +49,9 @@ steps:
 
 - script: |
     ls $(Build.Repository.LocalPath)/
+    ls $(Build.Repository.LocalPath)/dist
+    ls $(Build.Repository.LocalPath)/build
+    pwd
     git diff --name-only --diff-filter=AMR HEAD^1 HEAD | xargs -I '{}' cp --parents -r '{}' $(Build.BinariesDirectory)
 
     mkdir -p $(Build.BinariesDirectory)/libraries/python/libs
