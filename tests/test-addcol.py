@@ -7,6 +7,7 @@ class TestAppendCol(object):
 
     def test_with_status(self):
         spark = SparkSession.builder \
+            .config("spark.databricks.service.address", "https://adb-1964235368112589.9.azuredatabricks.net") \
             .config("spark.sql.shuffle.partitions", "1") \
             .master("local") \
             .enableHiveSupport() \
