@@ -5,5 +5,7 @@ from distutils.sysconfig import get_python_lib
 
 from setuptools import setup
 
-setup()
+setup(name='azuredevops',
+    version='1.0',
+    packages=['.azuredevops'])
 
