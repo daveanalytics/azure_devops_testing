@@ -7,5 +7,5 @@ from setuptools import setup
 
 setup(name='azuredevops',
     version='1.0',
-    packages=['.azuredevops'])
+    packages=['.utils'])
 
