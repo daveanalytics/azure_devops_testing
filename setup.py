@@ -7,5 +7,5 @@ from setuptools import setup
 
 setup(name='azuredevops',
     version='1.0',
-    packages=['.utils'])
+    packages=['.utils', '.utils.spark_utils'])
 
